@@ -26,7 +26,7 @@ if(isset($_SESSION['role'])){
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/login.css">
+<link rel="stylesheet" href="./assets/style.css">
 
 </head>
 

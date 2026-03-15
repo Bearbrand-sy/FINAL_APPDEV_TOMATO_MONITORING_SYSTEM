@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "greengrow";
+$database = "tomato_greengrow";
 
 $conn = new mysqli($host,$user,$password,$database);
 
