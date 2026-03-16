@@ -367,6 +367,8 @@ new Chart(document.getElementById('sensorChart').getContext('2d'), {
         }
     }
 });
+
+
 <?php endif; ?>
 </script>
 </body>
