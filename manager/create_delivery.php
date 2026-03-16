@@ -72,7 +72,7 @@ $deliveries = $conn->query("SELECT * FROM deliveries ORDER BY created_at DESC");
 <a href="datalogsmanager.php" class="nav-btn">Data Logs</a>
 <a href="transportmanager.php" class="nav-btn">Transport Logs</a>
 <a href="create_delivery.php" class="nav-btn active">Create Delivery</a>
-<a href="accounts_manager.php" class="nav-btn">Users</a>
+<a href="usermanager.php" class="nav-btn">Users</a>
 
 <div class="sidebar-foot">
 
