@@ -29,13 +29,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'add')
         if ($check->num_rows > 0) {
             $error = 'Email already exists.';
         } else {
+
+            // ✅ ONLY CHANGE: HASH PASSWORD
+            $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
+
             $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $name, $email, $pass, $role);
+            $stmt->bind_param("ssss", $name, $email, $hashedPassword, $role);
+
             if ($stmt->execute()) {
                 $success = "User \"$name\" added successfully as $role.";
             } else {
                 $error = 'Could not add user.';
             }
+
+            $stmt->close();
         }
         $check->close();
     }
@@ -57,13 +64,13 @@ $result = $conn->query("SELECT id, name, email, role FROM users ORDER BY id ASC"
 $users  = [];
 while ($row = $result->fetch_assoc()) $users[] = $row;
 
-// ── Count by role for summary ─────────────────────────
+// ── Count by role ─────────────────────────────────────
 $counts = ['Admin'=>0,'Manager'=>0,'User'=>0,'Driver'=>0];
 foreach ($users as $u) {
-    $r = $u['role'];
-    if (isset($counts[$r])) $counts[$r]++;
+    if (isset($counts[$u['role']])) $counts[$u['role']]++;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

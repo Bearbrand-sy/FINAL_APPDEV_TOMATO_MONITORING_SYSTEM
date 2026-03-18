@@ -196,13 +196,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'Admin', 'admin@gmail.com', '12345', 'Admin'),
-(2, 'Manager', 'manager@gmail.com', '12345', 'Manager'),
-(4, 'User', 'user@gmail.com', 'password123', 'User'),
-(5, 'Sander', 'sander@gmail.com', '123456', 'Manager'),
-(6, 'SANDER PEREJAN', 'sander.driver@greengrow.com', 'password123', 'Driver'),
-(7, 'ANTONY CANETE', 'antony.driver@greengrow.com', 'password123', 'Driver'),
-(8, 'JACOB RANIN', 'jacob@gmail.com', '12345', 'Driver');
+(1, 'Admin', 'admin@gmail.com', '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO', 'Admin'),
+(2, 'Manager', 'manager@gmail.com', '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO', 'Manager'),
+(4, 'User', 'user@gmail.com', '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO', 'User'),
+(5, 'Sander', 'sander@gmail.com', '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO', 'Manager'),
+(6, 'SANDER PEREJAN', 'sander.driver@greengrow.com', '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO', 'Driver'),
+(7, 'ANTONY CANETE', 'antony.driver@greengrow.com', '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO', 'Driver'),
+(8, 'JACOB RANIN', 'jacob@gmail.com', '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO', 'Driver');
 
 --
 -- Indexes for dumped tables
