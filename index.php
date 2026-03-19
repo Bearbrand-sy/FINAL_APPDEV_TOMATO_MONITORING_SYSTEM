@@ -17,6 +17,22 @@ if (isset($_SESSION['role'])) {
 
     exit();
 }
+
+// ── Error handling ──
+$errorMsg = "";
+
+if (isset($_GET['error'])) {
+    if ($_GET['error'] == "invalid_password") {
+        $errorMsg = "⚠ Incorrect password. Please try again.";
+    } elseif ($_GET['error'] == "user_not_found") {
+        $errorMsg = "⚠ Email not found.";
+    } else {
+        $errorMsg = "⚠ Login failed. Please try again.";
+    }
+}
+
+// Preserve email input
+$emailValue = htmlspecialchars($_GET['email'] ?? '');
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +41,10 @@ if (isset($_SESSION['role'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenGrow · Login</title>
+
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style.css">
+
     <style>
         .error-msg {
             display: none;
@@ -40,11 +58,14 @@ if (isset($_SESSION['role'])) {
             color: #b91c1c;
             margin-bottom: 16px;
         }
-        .error-msg.show { display: flex; animation: shake .3s ease; }
+        .error-msg.show {
+            display: flex;
+            animation: shake .3s ease;
+        }
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
-            25%       { transform: translateX(-5px); }
-            75%       { transform: translateX(5px); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
     </style>
 </head>
@@ -61,8 +82,9 @@ if (isset($_SESSION['role'])) {
     <h1>Welcome back</h1>
     <p class="subtitle">Sign in to your account</p>
 
-    <?php if (isset($_GET['error'])): ?>
-    <div class="error-msg show">⚠ Invalid username or password</div>
+    <!-- Error Message -->
+    <?php if (!empty($errorMsg)): ?>
+        <div class="error-msg show"><?= $errorMsg ?></div>
     <?php endif; ?>
 
     <form action="login.php" method="POST">
@@ -71,9 +93,11 @@ if (isset($_SESSION['role'])) {
             <label>Email</label>
             <div class="input-wrap">
                 <span class="icon">👤</span>
-                <input type="text" name="email" placeholder="Enter your email"
-                       value="<?= htmlspecialchars($_GET['email'] ?? '') ?>"
-                       autocomplete="username" required>
+                <input type="text" name="email"
+                       placeholder="Enter your email"
+                       value="<?= $emailValue ?>"
+                       autocomplete="username"
+                       required>
             </div>
         </div>
 
@@ -81,8 +105,10 @@ if (isset($_SESSION['role'])) {
             <label>Password</label>
             <div class="input-wrap">
                 <span class="icon">🔒</span>
-                <input type="password" name="password" placeholder="Enter your password"
-                       autocomplete="current-password" required>
+                <input type="password" name="password"
+                       placeholder="Enter your password"
+                       autocomplete="current-password"
+                       required>
             </div>
         </div>
 
