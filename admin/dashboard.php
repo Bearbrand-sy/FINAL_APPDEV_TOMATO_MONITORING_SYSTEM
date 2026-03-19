@@ -57,7 +57,7 @@ while ($row = $result->fetch_assoc()) {
     <div class="logo">🌿 GreenGrow<span>Farm Management</span></div>
     <a href="dashboard.php"    class="nav-btn active">Monitoring</a>
     <a href="datalogsadmin.php" class="nav-btn">Data Logs</a>
-    <a href="deliveries.php"   class="nav-btn">Transport Logs</a>
+    <a href="transportlogsadmin.php"   class="nav-btn">Transport Logs</a>
     <a href="useradmin.php"    class="nav-btn">Users</a>
     <div class="sidebar-foot">
         <div class="user-card">
